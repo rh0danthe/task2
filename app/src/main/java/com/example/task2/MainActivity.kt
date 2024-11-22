@@ -4,21 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.task2.compose.Task2App
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
+import com.example.task2.compose.NavGraphs
 import com.example.task2.ui.theme.MyApplicationTheme
-import com.example.task2.viewmodels.ElementViewModel
+import com.ramcosta.composedestinations.DestinationsNavHost
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme{
-                val viewModel: ElementViewModel = viewModel()
-                Task2App(viewModel = viewModel)
+                DestinationsNavHost(
+                    modifier = Modifier.fillMaxSize(),
+                    navGraph = NavGraphs.root
+                )
             }
         }
 
